@@ -1,0 +1,47 @@
+apache nifi sub projects -> minify , nifi registry
+Nifi stands for Niagara Files -> Open Source Data Distribution and Processing System
+NSA - National Security Agency
+
+
+Why NIFI , there are other ETL tools available in the market.
+Ans - 
+
+it's very very highly scalable in the sense
+
+I can make Apache Nifi to run as a cluster
+
+so horizontally I should be in a position to scale and
+
+it is very very highly configurable
+
+I can make custom processors where I can process any
+
+type of data whether it is structure, semi structure
+
+or unstructured data and whatever the volume of data
+
+SSL
+Denser flow
+Open computer
+Kafka Fling Storm
+
+installation as service in linux ?
+start nifi with system booting
+
+Flow Controller -> Controlls how processor should behave and how much amount of resources it should consume
+
+What is FTP ? 
+
+Bulletin - Log file for specific processor ?
+
+Load balancing ? Round robin?
+
+What is CRON job ?
+
+phApp.ddo.jobDetail.data
+
+
+Nifi Registry stores and manges shared resources in a centralized location.
+
+Apache hive is the data warhouse provided by hadoop eco system
+

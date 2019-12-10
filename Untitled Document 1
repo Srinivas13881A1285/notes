@@ -1,0 +1,54 @@
+import org.apache.commons.io.IOUtils
+import java.nio.charset.*
+import java.nio.charset.StandardCharsets
+import groovy.json.JsonSlurper
+import groovy.json.JsonBuilder
+import groovy.json.JsonOutput
+
+
+try{
+flowFile = session.get()
+if(!flowFile) return
+
+def jsonSlurper = new JsonSlurper()
+
+json_content = flowFile.read().withStream{i->
+    new JsonSlurper().parse(i)
+}
+
+
+log.info('Found json_content with refNum: {}',json_content.refNum)
+
+flowFile = session.putAttribute(flowFile, 'refNum', json_content.refNum)
+
+flowFile = session.putAttribute(flowFile, 'jobSeqNo', json_content.jobSeqNo)
+
+
+jsonOutput = JsonOutput.toJson(json_content)
+
+def jobSeqList = []
+
+jobSeqList.add(json_content.jobSeqNo)
+
+log.info('Found list: {}',jobSeqList)
+
+
+
+def json = new JsonBuilder()
+def root = json refNum:json_content.refNum,jobSeqNo:jobSeqList
+
+log.info('Found json root data: {}', root)
+
+
+jsonOutput = JsonOutput.toJson(root)
+
+
+flowFile = session.write(flowFile, {outputStream ->
+  outputStream.write(jsonOutput.toString().getBytes(StandardCharsets.UTF_8))
+} as OutputStreamCallback)
+
+session.transfer(flowFile, REL_SUCCESS)
+}
+catch(e){
+  session.transfer(flowFile, REL_FAILURE)
+}

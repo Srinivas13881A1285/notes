@@ -1,0 +1,1 @@
+Extract Processor is used to extract data into attributes.

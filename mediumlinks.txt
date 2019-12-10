@@ -1,0 +1,2 @@
+https://stuff.technology/mastering-apache-nifi-for-free-a778ba5864d5
+https://medium.com/@abdelkrim.hadjidj/apache-nifi-1-10-series-simplifying-error-handling-7de86f130acd
